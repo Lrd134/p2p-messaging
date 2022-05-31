@@ -12,11 +12,12 @@ before_action :set_user, only: %i[show delete update]
   end
 
   def create
-
+    @user = User.create user_params
+    render json: serialize_user
   end
 
   def update
-
+    
   end
 
 
