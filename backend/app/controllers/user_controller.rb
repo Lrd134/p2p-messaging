@@ -2,7 +2,7 @@ class UserController < ApplicationController
   set_user only: %w[show delete update]
 
   def index
-
+    render :json, serialize_user { is_collection: true }
   end
 
   def show
@@ -29,7 +29,7 @@ class UserController < ApplicationController
   end
 
   def serialize_user options = nil
-
+    UserSerializer.new(@user, options).serialized_json
   end
 
   def set_user
