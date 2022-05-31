@@ -1,4 +1,5 @@
 class UserSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :username, :messages
+  attributes :username
+  has_many :messages, if: Proc.new { |record| record.messages.any? }
 end
