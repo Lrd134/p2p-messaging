@@ -76,8 +76,8 @@ BadWords = [
 class UsernameValidator < ActiveModel::Validator
   def validate(record)
     counter = 0;
-    while record.errors == nil || counter > BadWords.length do
-      if record.username.include? BadWords[counter]
+    while record.errors.errors == [] && counter < BadWords.length do
+      if record.username.match BadWords[counter]
         record.errors.add :base, "This username contains Foul Language."
       end
       counter += 1;
