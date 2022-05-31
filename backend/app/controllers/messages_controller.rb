@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
     end
   
     def show
-  
+      
     end
   
     def create
