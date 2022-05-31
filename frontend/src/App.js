@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
 function App() {
   return (
     <div className="App">
@@ -8,6 +8,7 @@ function App() {
         <Link to="/signup">Signup</Link> |{" "}
         <Link to="/">Home</Link>
       </nav>
+      <Outlet />
     </div>
   );
 }
