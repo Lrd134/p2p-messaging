@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
   before_action :set_message, only: %i[show delete update]
   
     def index
-      @message = Message.all_by_user_id params.permit(:user_id)[:user_id]
+      @message = Message.all
       options = { is_collection: true }
       render json: serialize_message(options)
     end
@@ -12,7 +12,8 @@ class MessagesController < ApplicationController
     end
   
     def create
-  
+      @message = Message.create message_params
+      render json: serialize_message
     end
   
     def update
