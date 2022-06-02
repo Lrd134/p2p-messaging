@@ -10,23 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_02_165017) do
+ActiveRecord::Schema.define(version: 2022_06_02_171713) do
 
   create_table "conversations", force: :cascade do |t|
     t.string "name"
     t.string "description"
+    t.integer "creator"
+    t.integer "target"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "messages_id", null: false
+    t.index ["messages_id"], name: "index_conversations_on_messages_id"
   end
 
   create_table "messages", force: :cascade do |t|
     t.text "text"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id", null: false
-    t.integer "conversation_id", null: false
-    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
-    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -36,6 +36,5 @@ ActiveRecord::Schema.define(version: 2022_06_02_165017) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "messages", "conversations"
-  add_foreign_key "messages", "users"
+  add_foreign_key "conversations", "messages", column: "messages_id"
 end

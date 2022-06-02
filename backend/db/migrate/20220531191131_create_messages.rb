@@ -1,7 +1,6 @@
 class CreateMessages < ActiveRecord::Migration[6.1]
   def up
     create_table :messages do |t|
-      t.integer :user_id
       t.text :text
       t.timestamps
     end
