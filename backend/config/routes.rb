@@ -9,4 +9,10 @@ Rails.application.routes.draw do
   post '/profile/delete', to: 'users#delete'
 
   get '/messages', to: 'conversations#index'
+  post '/messages/new', to: 'messages#create'
+  post '/messages/edit', to: 'messages#update'
+  post '/messages/delete', to: 'messages#delete'
+
+  post '/conversations/edit', to: 'conversations#update'
+  post '/conversations/delete', to 'conversations#delete'
 end
