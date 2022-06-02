@@ -9,7 +9,8 @@ import Signup from './routes/signup';
 import Login from './routes/login';
 
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { applyMiddleware, createStore, compose } from 'redux'
+import thunk from 'redux-thunk'
 import rootReducer from './reducers/rootReducer'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // const createUser = ({user}) => {
@@ -33,7 +34,12 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 //   }).catch(error => console.log(error))
 // }
 
-const store = createStore(rootReducer)
+const store = compose(
+  applyMiddleware(thunk),
+  window.__REDUX_DEVTOOLS_EXTENSION__
+  ? window.__REDUX_DEVTOOLS_EXTENSION__()
+  : f => f,
+)(createStore)(rootReducer)
 
 root.render(
   <Provider store={store} >
@@ -41,7 +47,7 @@ root.render(
       <Routes>
         <Route path="/" element={<App />} >
         <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup createUser={createUser}/>} />
+        <Route path="/signup" element={<Signup createUser={"pause"}/>} />
         </Route>
       </Routes>
     </BrowserRouter>
