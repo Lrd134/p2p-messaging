@@ -14,5 +14,5 @@ Rails.application.routes.draw do
   post '/messages/delete', to: 'messages#delete'
 
   post '/conversations/edit', to: 'conversations#update'
-  post '/conversations/delete', to 'conversations#delete'
+  post '/conversations/delete', to: 'conversations#delete'
 end
