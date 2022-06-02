@@ -1,4 +1,6 @@
 class UserSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :username, :creators, :targets
+  set_key_transform :camel_lower
+  attribute :uuid, &:id
+  attribute :given_name, &:username
 end

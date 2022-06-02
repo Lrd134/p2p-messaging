@@ -1,4 +1,4 @@
 class MessageSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :creator, :target, :conversation
+  set_key_transform :camel_lower
 end
