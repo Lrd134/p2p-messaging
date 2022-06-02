@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_02_163332) do
+ActiveRecord::Schema.define(version: 2022_06_02_165017) do
 
   create_table "conversations", force: :cascade do |t|
     t.string "name"
@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 2022_06_02_163332) do
     t.text "text"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "username"
     t.integer "user_id", null: false
     t.integer "conversation_id", null: false
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
