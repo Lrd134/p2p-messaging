@@ -1,4 +1,4 @@
-class Conversation < ApplicationRecord
-  belongs_to :messages
+class Conversation < ApplicationRecord  
+  has_many :messages
   accepts_nested_attributes_for :messages
 end
