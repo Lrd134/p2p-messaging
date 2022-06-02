@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 before_action :set_user, only: %i[login delete update]
+skip_forgery_protection
 
   def index
     @user = User.all
@@ -17,6 +18,7 @@ before_action :set_user, only: %i[login delete update]
   end
 
   def create
+    byebug
     @user = User.create user_params
     render json: serialize_user
   end
