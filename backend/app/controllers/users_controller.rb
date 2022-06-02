@@ -8,8 +8,8 @@ before_action :set_user, only: %i[login delete update]
   end
 
   def show
-    @user = User.find_by(username: user_params[:username])
-    render json: serialize_user
+    @user = User.find_by(username: params.permit(:username)[:username].downcase)
+    render json: UserSerializer.new(@user).serialized_json
   end
 
   def login
@@ -46,7 +46,7 @@ before_action :set_user, only: %i[login delete update]
   end
 
   def set_user
-    @user = User.find_by(username: user_params[:username])
+    @user = User.find_by(username: user_params[:username].downcase)
     redirect_to '404' unless @user.authenticate(user_params[:password])
   end
 
