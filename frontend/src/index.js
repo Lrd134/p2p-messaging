@@ -24,8 +24,9 @@ const createUser = ({user}) => {
           }})
 
   }).then(resp => resp.json()).then(json => {
-    console.log("received \n\n" + json)
-  })
+    console.log("received \n\n")
+    console.log(json)
+  }).catch(error => console.log(error))
 }
 root.render(
   <BrowserRouter>

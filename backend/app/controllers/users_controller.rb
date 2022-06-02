@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-before_action :set_user, only: %i[login delete update]
-skip_forgery_protection
+  before_action :set_user, only: %i[login delete update]
+  skip_forgery_protection
 
   def index
     @user = User.all
@@ -18,9 +18,14 @@ skip_forgery_protection
   end
 
   def create
-    byebug
     @user = User.create user_params
-    render json: serialize_user
+    if @user.errors == []
+      render json: UserSerializer.new(@user).serialized_json
+      return
+    end
+    render json: {
+      :errors => [@user.errors.full_messages]
+    }
   end
 
   def update
