@@ -8,9 +8,7 @@ before_action :set_user, only: %i[show delete update]
   end
 
   def show
-    if @user.authenticate(user_params[:password])
-      render json: serialize_user
-    end
+    render json: serialize_user
   end
 
   def create
@@ -44,6 +42,7 @@ before_action :set_user, only: %i[show delete update]
 
   def set_user
     @user = User.find_by(username: user_params[:username])
+    redirect_to '404' unless @user.authenticate(user_params[:password])
   end
 
 end
