@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-before_action :set_user, only: %i[show delete update]
+before_action :set_user, only: %i[login delete update]
 
   def index
     @user = User.all
@@ -8,6 +8,11 @@ before_action :set_user, only: %i[show delete update]
   end
 
   def show
+    @user = User.find_by(username: user_params[:username])
+    render json: serialize_user
+  end
+
+  def login
     render json: serialize_user
   end
 
