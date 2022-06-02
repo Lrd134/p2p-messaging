@@ -28,7 +28,7 @@ class ConversationsController < ApplicationController
     private
     
     def conversation_params
-      params.require(:conversation).permit(:name, :description, :message)
+      params.require(:conversation).permit(:name, :description, message: [ :text ])
     end
   
     def serialize_conversation options = nil
