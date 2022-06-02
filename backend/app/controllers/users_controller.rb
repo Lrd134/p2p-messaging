@@ -8,7 +8,7 @@ before_action :set_user, only: %i[show delete update]
   end
 
   def show
-
+    render json: serialize_user
   end
 
   def create
@@ -17,12 +17,17 @@ before_action :set_user, only: %i[show delete update]
   end
 
   def update
-    
+    @user.update(user_params)
+    render json: serialize_user
   end
 
 
   def delete
-
+    @user_name = @user.name
+    @user.destroy
+    render json: {
+      :message => "#{@user_name} Destroyed"
+    }.to_json
   end
 
   private
@@ -36,7 +41,7 @@ before_action :set_user, only: %i[show delete update]
   end
 
   def set_user
-    @user = User.find_by(username: params.require(:user).permit(:username))
+    @user = User.find_by(username: user_params[:username])
   end
 
 end
