@@ -10,18 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_02_171713) do
-
-  create_table "conversations", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.integer "creator"
-    t.integer "target"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "messages_id", null: false
-    t.index ["messages_id"], name: "index_conversations_on_messages_id"
-  end
+ActiveRecord::Schema.define(version: 2022_05_31_191131) do
 
   create_table "messages", force: :cascade do |t|
     t.text "text"
@@ -36,5 +25,4 @@ ActiveRecord::Schema.define(version: 2022_06_02_171713) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "conversations", "messages", column: "messages_id"
 end

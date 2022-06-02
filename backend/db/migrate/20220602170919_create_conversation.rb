@@ -3,8 +3,6 @@ class CreateConversation < ActiveRecord::Migration[6.1]
     create_table :conversations do |t|
       t.string :name
       t.string :description
-      t.integer :creator
-      t.integer :target
       t.timestamps
     end
   end
