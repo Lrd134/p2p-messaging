@@ -8,7 +8,9 @@ before_action :set_user, only: %i[show delete update]
   end
 
   def show
-    render json: serialize_user
+    if @user.authenticate(user_params[:password])
+      render json: serialize_user
+    end
   end
 
   def create
