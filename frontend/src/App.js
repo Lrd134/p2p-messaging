@@ -8,6 +8,7 @@ function App() {
         <Link to="/signup">Signup</Link> |{" "}
         <Link to="/">Home</Link>
       </nav>
+      
       <Outlet />
     </div>
   );
