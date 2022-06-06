@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[login delete update]
-  skip_forgery_protection
 
   def index
     @user = User.all
