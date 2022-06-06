@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[delete update]
+  before_action :set_user, only: %i[login delete update]
+
   def index
     @user = User.all
     options = { is_collection: true }
@@ -11,10 +12,15 @@ class UsersController < ApplicationController
     render json: UserSerializer.new(@user).serialized_json
   end
 
+  def login
+    render json: serialize_user
+  end
+
   def create
     @user = User.create user_params
     if @user.errors == []
-      redirect_to '/login', user: user_params
+      render json: UserSerializer.new(@user).serialized_json
+      return
     end
     render json: {
       :errors => [@user.errors.full_messages]
