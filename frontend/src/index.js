@@ -15,11 +15,11 @@ import rootReducer from './reducers/rootReducer'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // const createUser = ({user}) => {
 //   console.log(user.username + "\n" + user.password)
-//   fetch('http://127.0.0.1:3000/signup', {
-//     headers: {
+//   fetch(process.env.REACT_APP_BACKEND_URL + '/signup', {
+    
+//     headers: {            
 //       "Content-Type": "application/json",
-//       Accept: "application/json",
-//       "Access-Control-Allow-Origin": '*'
+//       Accept: "application/json"
 //   },
 //   method: "POST",
 //   body: JSON.stringify({
@@ -47,7 +47,7 @@ root.render(
       <Routes>
         <Route path="/" element={<App />} >
         <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup createUser={"pause"}/>} />
+        <Route path="/signup" element={<Signup createUser={createUser}/>} />
         </Route>
       </Routes>
     </BrowserRouter>

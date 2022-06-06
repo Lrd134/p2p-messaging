@@ -1,8 +1,9 @@
 import { Outlet, Link } from "react-router-dom";
+import { connect } from 'react-redux';
 import React, { Component } from 'react';
 class App extends Component {
   componentDidMount() {
-    fetch(process.ENV.BACKEND_URL, {credentials: 'include'})
+    // fetch(process.env.REACT_APP_BACKEND_URL)
   }
   render () {
     return (
@@ -19,10 +20,14 @@ class App extends Component {
     );
   }
 }
-function getCSRFToken() {
-  return unescape(document.cookie.split('=')[1])
+const mapStateToProps = () => {
+
 }
-export default App;
+
+const mapDispatchToProps = dispatch => {
+  
+}
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 /*
 const configObject = {
                 method: "POST",
@@ -33,4 +38,8 @@ const configObject = {
                 },
                 body: JSON.stringify(data)
             }
+            
+function getCSRFToken() {
+  return unescape(document.cookie.split('=')[1])
+}
             */
