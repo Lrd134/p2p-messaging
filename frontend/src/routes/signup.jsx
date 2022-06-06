@@ -1,32 +1,41 @@
-import { useState } from 'react';
-export default function Signup({createUser}) {
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
-
-  const handleSubmit = event => {
-    event.preventDefault();
-    createUser({ user: {
-      username: username,
-      password: password
-    }})
+import React, { Component } from 'react';
+import newUser from '../users/userDispatch'
+import { connect } from 'react-redux';
+class Signup extends Component {
+  state = {
+    username: null,
+    password: null
   }
-  const handleChange = event => {
+  handleSubmit = event => {
     event.preventDefault();
-    if (event.target.name === "username") {
-      setUsername(event.target.value)
-      return;
-    }
-    setPassword(event.target.value)
-    
+    if (!!this.state.username !== false &&
+      !!this.state.password !== false) {
+        this.props.newUser(this.state)
+      }
   }
-  return (
+  handleChange = event => {
+    event.preventDefault();
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+  render() {
+    return (
     <main>
-      <h2>Signup</h2>
-      <form onSubmit={handleSubmit}>
-        <input onChange={handleChange} value={username} name="username" type="text" placeholder="User Name"/>
-        <input onChange={handleChange} value={password} name="password" type="text" placeholder="Password"/>
-        <input onClick={handleSubmit} type="Submit" readOnly={true} value="Signup" onSubmit={handleSubmit}/>
+      <form onSubmit={this.handleSubmit}>
+        <input onChange={this.handleChange} value={this.props.username} name="username" type="text" placeholder="User Name"/>
+        <input onChange={this.handleChange} value={this.props.password} name="password" type="text" placeholder="Password"/>
+        <input onClick={this.handleSubmit} type="Submit" readOnly={true} value="Signup" onSubmit={this.handleSubmit}/>
       </form>
     </main>
-  );
+    )
+  }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    newUser: (user) => dispatch(newUser(user))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Signup);
