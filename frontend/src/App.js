@@ -13,5 +13,7 @@ function App() {
     </div>
   );
 }
-
+function getCSRFToken() {
+  return unescape(document.cookie.split('=')[1])
+}
 export default App;
