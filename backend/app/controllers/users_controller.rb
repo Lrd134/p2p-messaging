@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create user_params
-    if @user.errors == []
+    if @user.errors.errors == []
       render json: UserSerializer.new(@user).serialized_json
       return
     end
