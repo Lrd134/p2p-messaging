@@ -15,8 +15,9 @@ export default function sessionReducer(state = {
         requesting: false
       }
     }
-    case 'GET_SESSION': {
-      sessionStorage.setItem('userId', action.payload)
+    case 'LOGIN_USER': {
+      sessionStorage.setItem('userId', action.payload.id);
+      sessionStorage.setItem('givenName', action.payload.givenName);
       return {
         ...state,
         session: action.payload
