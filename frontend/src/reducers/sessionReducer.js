@@ -23,6 +23,11 @@ export default function sessionReducer(state = {
         session: action.payload
       }
     }
+    case 'LOGOUT_USER': {
+      return {
+        session: []
+      }
+    }
     default:
       return state
   }
