@@ -22,7 +22,7 @@ class App extends Component {
         <>
           <Link to="/logout">Logout</Link>
           <Link to="/messages">Messages</Link>
-          <Link to={`/profile?username=${this.props.session.userId}`}>Profile</Link>
+          <Link to={`/profile?username=${this.props.session.session.givenName}`}>Profile</Link>
         </>
       }
                 </nav>
