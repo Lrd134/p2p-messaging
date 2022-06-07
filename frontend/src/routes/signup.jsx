@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import newUser from '../users/userDispatch'
+import { newUser } from '../users/userDispatch'
 import { connect } from 'react-redux';
 class Signup extends Component {
   state = {
