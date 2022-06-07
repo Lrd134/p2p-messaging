@@ -1,5 +1,5 @@
 import initRequest from '../actions/initialAction'
-import { loginAction } from '../actions/sessionActions'
+import { loginAction, logoutAction } from '../actions/sessionActions'
 import badRequest from '../actions/badRequestAction'
 
 const newUser = (user) => {
@@ -59,4 +59,9 @@ const loginUser = user => {
       }).catch(error => console.log(error))
   }
 }
-export { newUser, loginUser };
+const logoutUser = () => {
+  return dispatch => {
+    dispatch(logoutAction);
+  }
+}
+export { newUser, loginUser, logoutUser };
