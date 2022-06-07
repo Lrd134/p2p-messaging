@@ -24,10 +24,7 @@ const mapStateToProps = () => {
 
 }
 
-const mapDispatchToProps = dispatch => {
-  
-}
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(null, null)(App);
 /*
 const configObject = {
                 method: "POST",

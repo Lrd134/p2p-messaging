@@ -47,7 +47,7 @@ root.render(
       <Routes>
         <Route path="/" element={<App />} >
         <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup createUser={createUser}/>} />
+        <Route path="/signup" element={<Signup createUser={'nil'}/>} />
         </Route>
       </Routes>
     </BrowserRouter>
