@@ -8,8 +8,8 @@ const loginAction = (user) => {
   }
   
 }
-const logoutAction = () => {
-  
-}
+const logoutAction = {
+    type: "LOGOUT_USER"
+  };
 
 export { loginAction, logoutAction };
