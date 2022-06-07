@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   end
 
   def login
-    render json: serialize_user
+    render json: UserSerializer.new(@user).serialized_json
   end
 
   def create
