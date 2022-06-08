@@ -2,7 +2,13 @@ class MessagesController < ApplicationController
   before_action :set_message, only: %i[show delete update]
   
     def index
-      @message = Message.all
+      allowedParams = params.permit(:username, :limit)
+      allowedParams[:limit] || allowedParams[:limit] = 10
+      user_id = User.find_by_username(allowedParams[:username]).id
+      @message = Message.where('creator_id = ?', user_id).limit(allowedParams[:limit])
+      @message2 = Message.where('target_id = ?', user_id).limit(allowedParams[:limit])
+      @message = @message2 + @message
+      @message = @message.sort_by { | msg | -msg.created_at.to_i }
       options = { is_collection: true }
       render json: serialize_message(options)
     end
