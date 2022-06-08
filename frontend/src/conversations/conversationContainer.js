@@ -16,10 +16,10 @@ const mapStateToProps = ({conversations}) => {
     conversations: conversations
   }
 }
-const mapDispatchToProps = dispatch => {
-  return {
-    getMessages: () => dispatch(getMessages())
-  }
-}
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     sendMessage: (user, message) => dispatch(sendMessage(user, message))
+//   }
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ConversationContainer)
+export default connect(mapStateToProps, null)(ConversationContainer)
