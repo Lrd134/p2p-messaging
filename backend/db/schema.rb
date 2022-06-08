@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_02_170919) do
+ActiveRecord::Schema.define(version: 2022_06_08_170836) do
 
   create_table "conversations", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "creator_id"
+    t.integer "target_id"
   end
 
   create_table "messages", force: :cascade do |t|

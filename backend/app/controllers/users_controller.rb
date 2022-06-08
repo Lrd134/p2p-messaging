@@ -13,7 +13,14 @@ class UsersController < ApplicationController
   end
 
   def login
-    render json: UserSerializer.new(@user).serialized_json
+    render json: {
+      user: {
+        id: @user.id,
+        givenName: @user.username,
+        incomingConversations: @user.incoming_conversations.order(updated_at: :desc).map {|conversation| conversation.messages.order(created_at: :desc).first()},
+        outgoingConversations: @user.outgoing_conversations.order(updated_at: :desc).map {|conversation| conversation.messages.order(created_at: :desc).first()}
+      }
+    }.to_json
   end
 
   def create
