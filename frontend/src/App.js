@@ -18,7 +18,7 @@ class App extends Component {
     return (
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<HomePage />} >
+            <Route path="/" element={<HomePage session={this.props.session.session}/>} >
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/logout" element={<Logout />} />
@@ -29,14 +29,18 @@ class App extends Component {
     );
   }
 }
-const mapStateToProps = ({session}) => {
+const mapStateToProps = ({session, conversations, messages, users}) => {
   return {
-    session: session
+    session,
+    conversations,
+    messages,
+    users
   }
 }
 const mapDispatchToProps = dispatch => {
   return {
-    logoutUser: () => dispatch(logoutUser())
+    logoutUser: () => dispatch(logoutUser()),
+    
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App);
