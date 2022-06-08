@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   post '/profile/edit', to: 'users#update'
   post '/profile/delete', to: 'users#delete'
 
-  get '/messages', to: 'conversations#index'
+  get '/messages', to: 'messages#index'
   post '/messages/new', to: 'messages#create'
   post '/messages/edit', to: 'messages#update'
   post '/messages/delete', to: 'messages#delete'
