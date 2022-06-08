@@ -8,6 +8,7 @@ import App from './App';
 import Signup from './routes/signup';
 import Login from './routes/login';
 import Logout from './routes/logout';
+import ConversationContainer from './conversations/conversationContainer'
 import { Provider } from 'react-redux'
 import { applyMiddleware, createStore, compose } from 'redux'
 import thunk from 'redux-thunk'
@@ -49,6 +50,7 @@ root.render(
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/logout" element={<Logout />} />
+          <Route path="/messages" element={<ConversationContainer />} />
         </Route>
       </Routes>
     </BrowserRouter>
