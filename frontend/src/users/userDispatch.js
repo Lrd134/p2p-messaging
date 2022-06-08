@@ -1,9 +1,8 @@
 import { loginAction, logoutAction, sessionRequestAction } from '../actions/sessionActions'
 import badRequest from '../actions/badRequestAction'
-import { conversationRequestAction, getConversationsAction } from '../actions/conversationActions'
 const newUser = (user) => {
   return (dispatch) => {
-    dispatch(sessionRequestAction)
+    dispatch(sessionRequestAction())
     
     fetch(process.env.REACT_APP_BACKEND_URL + '/signup', {
       headers: {            
@@ -32,8 +31,7 @@ const newUser = (user) => {
 
 const loginUser = user => {
   return dispatch => {
-    dispatch(sessionRequestAction)
-    dispatch(conversationRequestAction)
+    dispatch(sessionRequestAction())
     
     fetch(process.env.REACT_APP_BACKEND_URL + '/login', {
       headers: {            
@@ -55,14 +53,14 @@ const loginUser = user => {
           dispatch(badRequest)
           return;
         }
-        dispatch(getConversationsAction(json))
         dispatch(loginAction(json))
       }).catch(error => console.log(error))
   }
 }
 const logoutUser = () => {
   return dispatch => {
-    dispatch(logoutAction);
+    dispatch(sessionRequestAction())
+    dispatch(logoutAction());
     dispatch({ type: "RESET_MESSAGES"})
     dispatch({ type: "RESET_USERS"})
     dispatch({ type: "RESET_CONVERSATIONS"})
