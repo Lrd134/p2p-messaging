@@ -1,7 +1,6 @@
 import { Outlet, Link } from "react-router-dom";
 import React from 'react';
 function HomePage(props) {
-  console.log(props)
   return (
     <div className="homepage">
     
