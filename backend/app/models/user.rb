@@ -7,7 +7,7 @@ class User < ApplicationRecord
     :source => :creator
   has_many :targets, :foreign_key => :target_id,
     :class_name => 'Message'
-  has_many :incoming_messsages, :through => :targets,
+  has_many :incoming_messages, :through => :targets,
     :source => :target
   validates_with UsernameValidator
   validates :username, presence: true, uniqueness: true, length: { minimum: 3, maximum: 20 }
