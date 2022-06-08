@@ -1,15 +1,20 @@
 const loginAction = (user) => {
   return {
     payload: {
-      givenName: user.data.attributes.givenName,
-      id: user.data.id
+      givenName: user.givenName,
+      id: user.id
     },
     type: "LOGIN_USER"
   }
   
 }
+const sessionRequestAction = () => {
+  return {
+    type: "SESSION_REQUEST"
+  }
+}
 const logoutAction = {
     type: "LOGOUT_USER"
   };
 
-export { loginAction, logoutAction };
+export { loginAction, logoutAction, sessionRequestAction };
