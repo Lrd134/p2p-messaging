@@ -3,12 +3,11 @@ import {
   BrowserRouter,
   Routes,
   Route,
-  Navigate,
 } from "react-router-dom";
 import App from './App';
 import Signup from './routes/signup';
 import Login from './routes/login';
-
+import Logout from './routes/logout';
 import { Provider } from 'react-redux'
 import { applyMiddleware, createStore, compose } from 'redux'
 import thunk from 'redux-thunk'
@@ -49,7 +48,7 @@ root.render(
         <Route path="/" element={<App />} >
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route exact path="/logout" element={ sessionStorage.clear() && <Navigate to="/"/>}/>
+          <Route path="/logout" element={<Logout />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -1,10 +1,8 @@
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, Navigate, } from "react-router-dom";
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
+import { logoutUser } from './users/userDispatch'
 class App extends Component {
-  componentDidMount() {
-    // fetch(process.env.REACT_APP_BACKEND_URL)
-  }
   render () {
     return (
     <div className="App">
@@ -36,8 +34,12 @@ const mapStateToProps = ({session}) => {
     session: session
   }
 }
-
-export default connect(mapStateToProps, null)(App);
+const mapDispatchToProps = dispatch => {
+  return {
+    logoutUser: () => dispatch(logoutUser())
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 /*
 const configObject = {
                 method: "POST",
