@@ -3,7 +3,7 @@ export default function sessionReducer(state = {
   requesting: false
 }, action) {
   switch (action.type) {
-    case 'REQUESTING': {
+    case 'SESSION_REQUEST': {
       return {
         ...state,
         requesting: true
@@ -20,7 +20,8 @@ export default function sessionReducer(state = {
       sessionStorage.setItem('givenName', action.payload.givenName);
       return {
         ...state,
-        session: action.payload
+        session: action.payload,
+        requesting: false
       }
     }
     case 'LOGOUT_USER': {

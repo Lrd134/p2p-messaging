@@ -15,6 +15,12 @@ export default function userReducer(state = {
         requesting: false
       }
     }
+    case 'RESET_USERS': {
+      return {
+        users: [],
+        requesting: false
+      }
+    }
     case 'GET_USERS': {
       return {
         ...state,

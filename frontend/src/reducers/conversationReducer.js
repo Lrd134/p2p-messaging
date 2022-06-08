@@ -3,7 +3,7 @@ export default function conversationReducer(state = {
   requesting: false
 }, action) {
   switch (action.type) {
-    case 'REQUESTING': {
+    case 'CONVERSATION_REQUEST': {
       return {
         ...state,
         requesting: true
@@ -15,10 +15,16 @@ export default function conversationReducer(state = {
         requesting: false
       }
     }
+    case 'RESET_CONVERSATIONS': {
+      return {
+        conversations: []
+      }
+    }
     case 'GET_CONVERSATIONS': {
       return {
         ...state,
-        conversations: action.payload
+        conversations: action.payload,
+        requesting: false
       }
     }
     default:

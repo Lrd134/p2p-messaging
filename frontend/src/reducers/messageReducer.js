@@ -3,7 +3,7 @@ export default function messageReducer(state = {
   requesting: false
 }, action) {
   switch (action.type) {
-    case 'REQUESTING': {
+    case 'MESSAGE_REQUEST': {
       return {
         ...state,
         requesting: true
@@ -13,6 +13,11 @@ export default function messageReducer(state = {
       return {
         ...state,
         requesting: false
+      }
+    }
+    case 'RESET_MESSAGES': {
+      return {
+        messages: []
       }
     }
     case 'GET_MESSAGES': {
