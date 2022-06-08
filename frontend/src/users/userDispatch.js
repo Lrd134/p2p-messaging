@@ -1,7 +1,7 @@
 import initRequest from '../actions/initialAction'
 import { loginAction, logoutAction } from '../actions/sessionActions'
 import badRequest from '../actions/badRequestAction'
-
+import { getMsgAction } from '../actions/messageActions'
 const newUser = (user) => {
   return (dispatch) => {
     dispatch(initRequest)
@@ -55,6 +55,7 @@ const loginUser = user => {
           dispatch(badRequest)
           return;
         }
+        dispatch(getMsgAction(json))
         dispatch(loginAction(json))
       }).catch(error => console.log(error))
   }
