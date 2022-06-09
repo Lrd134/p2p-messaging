@@ -42,7 +42,7 @@ const mapDispatchToProps = dispatch => {
   return {
     logoutUser: () => dispatch(logoutUser()),
     loginUser: user => dispatch(loginUser(user)),
-    getMessages: () => dispatch(getMessages())
+    getMessages: user => dispatch(getMessages(user))
     
   }
 }
