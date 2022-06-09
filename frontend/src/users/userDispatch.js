@@ -30,7 +30,6 @@ const newUser = (user) => {
 const loginUser = user => {
   return dispatch => {
     dispatch(sessionRequestAction())
-    
     fetch(process.env.REACT_APP_BACKEND_URL + '/login', {
       headers: {            
       "Content-Type": "application/json",
