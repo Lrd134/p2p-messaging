@@ -11,6 +11,7 @@ import Logout from './routes/logout';
 import ConversationContainer from './conversations/conversationContainer'
 import { connect } from 'react-redux';
 import { logoutUser, loginUser } from './users/userDispatch'
+import { getMessages } from './messages/messagesDispatch'
 
 
 class App extends Component {
@@ -19,7 +20,7 @@ class App extends Component {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<HomePage session={this.props.session.session}/>} >
-              <Route path="/login" element={<Login loginUser={this.props.loginUser}/>} />
+              <Route path="/login" element={<Login loginUser={this.props.loginUser} getMessages={this.props.getMessages} />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/logout" element={<Logout />} />
               <Route path="/messages" element={<ConversationContainer />} />
@@ -40,7 +41,8 @@ const mapStateToProps = ({session, conversations, messages, users}) => {
 const mapDispatchToProps = dispatch => {
   return {
     logoutUser: () => dispatch(logoutUser()),
-    loginUser: user => dispatch(loginUser(user))
+    loginUser: user => dispatch(loginUser(user)),
+    getMessages: () => dispatch(getMessages())
     
   }
 }
