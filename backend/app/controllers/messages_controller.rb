@@ -5,13 +5,20 @@ class MessagesController < ApplicationController
 
       allowedParams = params.require(:user).permit(:username, :password, :limit)
       allowedParams[:limit] || allowedParams[:limit] = 10
-      user_id = User.find_by_username(allowedParams[:username]).id
-      @message = Message.where('creator_id = ?', user_id).limit(allowedParams[:limit])
-      @message2 = Message.where('target_id = ?', user_id).limit(allowedParams[:limit])
-      @message = @message2 + @message
-      @message = @message.sort_by { | msg | -msg.created_at.to_i }
-      options = { is_collection: true }
-      render json: serialize_message(options)
+      @user = User.find_by_username(allowedParams[:username])
+      if @user && @user.authenticate(allowedParams[:password])
+        @message = Message.where('creator_id = ?', @user.id).limit(allowedParams[:limit])
+        @message2 = Message.where('target_id = ?', @user.id).limit(allowedParams[:limit])
+        @message = @message2 + @message
+        @message = @message.sort_by { | msg | -msg.created_at.to_i }
+        options = { is_collection: true }
+        render json: serialize_message(options)
+        return
+      end
+        render json: {
+          error: "Resource restricted to verified users."
+        }.to_json
+
     end
   
     def show
