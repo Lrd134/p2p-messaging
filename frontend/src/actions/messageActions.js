@@ -1,6 +1,6 @@
 const getMessagesAction = data => {
   return {
-    payload: [...data.data.attributes.creators, ...data.data.attributes.targets],
+    payload: data.data,
     type: "GET_MESSAGES"
   }
 }
