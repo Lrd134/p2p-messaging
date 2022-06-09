@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 class Login extends Component {
   state = {
-    username: null,
-    password: null
+    username: "",
+    password: ""
   }
   handleSubmit = event => {
     event.preventDefault();
     this.props.loginUser(this.state)
+    this.props.getMessages(this.state)
   }
   handleChange = event => {
     event.preventDefault();
