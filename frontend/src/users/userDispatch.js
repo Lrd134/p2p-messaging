@@ -1,5 +1,4 @@
 import { loginAction, logoutAction, sessionRequestAction } from '../actions/sessionActions'
-import badRequest from '../actions/badRequestAction'
 const newUser = (user) => {
   return (dispatch) => {
     dispatch(sessionRequestAction())
@@ -21,7 +20,6 @@ const newUser = (user) => {
         console.log(json)
         if (typeof json === Array) {
           alert(json[0][0])
-          dispatch(badRequest)
           return;
         }
         dispatch(loginAction(json))
@@ -50,7 +48,6 @@ const loginUser = user => {
         console.log(json)
         if (typeof json === Array) {
           alert(json[0][0])
-          dispatch(badRequest)
           return;
         }
         dispatch(loginAction(json))
