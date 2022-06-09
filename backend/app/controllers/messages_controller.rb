@@ -2,7 +2,8 @@ class MessagesController < ApplicationController
   before_action :set_message, only: %i[show delete update]
   
     def index
-      allowedParams = params.permit(:username, :limit)
+
+      allowedParams = params.require(:user).permit(:username, :password, :limit)
       allowedParams[:limit] || allowedParams[:limit] = 10
       user_id = User.find_by_username(allowedParams[:username]).id
       @message = Message.where('creator_id = ?', user_id).limit(allowedParams[:limit])
