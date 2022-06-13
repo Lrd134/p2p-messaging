@@ -8,7 +8,7 @@ import HomePage from './homePage';
 import Signup from './routes/signup';
 import Login from './routes/login';
 import Logout from './routes/logout';
-import MessageContainer from './messages/messageContainer'
+import ConversationContainer from './conversations/conversationContainer'
 import { connect } from 'react-redux';
 import { logoutUser, loginUser } from './users/userDispatch'
 import { getMessages } from './messages/messagesDispatch'
@@ -23,7 +23,7 @@ class App extends Component {
               <Route path="/login" element={<Login loginUser={this.props.loginUser} getMessages={this.props.getMessages} />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/logout" element={<Logout />} />
-              <Route path="/messages" element={<MessageContainer messages={this.props.messages}/>} />
+              <Route path="/messages" element={<ConversationContainer conversations={this.props.conversations}/>} />
             </Route>
           </Routes>
         </BrowserRouter>

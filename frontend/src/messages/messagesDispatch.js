@@ -1,4 +1,5 @@
 import { getMessagesAction, messageRequestAction } from '../actions/messageActions'
+import { getConversationsAction } from '../actions/conversationActions'
 const getMessages = user => {
   return dispatch => {
     dispatch(messageRequestAction)
@@ -23,6 +24,7 @@ const getMessages = user => {
           return;
         }
         dispatch(getMessagesAction(json))
+        dispatch(getConversationsAction(json))
       }).catch(error => console.log(error))
   }
 }
