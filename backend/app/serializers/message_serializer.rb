@@ -1,6 +1,6 @@
 class MessageSerializer
   include FastJsonapi::ObjectSerializer
-  attribute :text
+  attributes :text, :conversation_id
   attribute :creator do | object |
     {
       :givenName => object.creator.username,

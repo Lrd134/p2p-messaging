@@ -22,6 +22,7 @@ class Signup extends Component {
   render() {
     return (
     <main>
+      <h1>Signup</h1>
       <form onSubmit={this.handleSubmit}>
         <input onChange={this.handleChange} value={this.props.username} name="username" type="text" placeholder="User Name"/>
         <input onChange={this.handleChange} value={this.props.password} name="password" type="text" placeholder="Password"/>

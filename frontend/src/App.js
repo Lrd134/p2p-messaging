@@ -8,7 +8,7 @@ import HomePage from './homePage';
 import Signup from './routes/signup';
 import Login from './routes/login';
 import Logout from './routes/logout';
-import ConversationContainer from './conversations/conversationContainer'
+import MessageContainer from './messages/messageContainer'
 import { connect } from 'react-redux';
 import { logoutUser, loginUser } from './users/userDispatch'
 import { getMessages } from './messages/messagesDispatch'
@@ -23,7 +23,7 @@ class App extends Component {
               <Route path="/login" element={<Login loginUser={this.props.loginUser} getMessages={this.props.getMessages} />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/logout" element={<Logout />} />
-              <Route path="/messages" element={<ConversationContainer />} />
+              <Route path="/messages" element={<MessageContainer messages={this.props.messages}/>} />
             </Route>
           </Routes>
         </BrowserRouter>
@@ -43,7 +43,6 @@ const mapDispatchToProps = dispatch => {
     logoutUser: () => dispatch(logoutUser()),
     loginUser: user => dispatch(loginUser(user)),
     getMessages: user => dispatch(getMessages(user))
-    
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App);
