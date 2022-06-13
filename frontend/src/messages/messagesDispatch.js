@@ -16,8 +16,6 @@ const getMessages = user => {
               }})
 
       }).then(resp => resp.json()).then(json => {
-        console.log("received \n\n")
-        console.log(json)
         if (typeof json === Array) {
           alert(json[0][0])
           
