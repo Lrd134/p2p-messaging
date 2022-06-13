@@ -7,7 +7,6 @@ class ConversationContainer extends Component {
     
   }
   render() {
-    console.log(this.props.conversations)
     return (
       <main>
         <h1>Conversations</h1>
