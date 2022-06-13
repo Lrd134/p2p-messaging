@@ -1,7 +1,15 @@
 const getConversationsAction = data => {
-  const conversations = [...data.user.incomingConversations, ...data.user.outgoingConversations]
+  const found = [];
+  const latest = [];
+  const getLatestConversations = data => {
+    if (!found.includes(data.attributes.conversation_id)) {
+      latest.push(data)
+      found.push(data.attributes.conversation_id)
+    }
+  }
+  data.data.forEach(getLatestConversations);
   return {
-    payload: conversations,
+    conversations: latest,
     type: "GET_CONVERSATIONS"    
   }
 }
