@@ -9,7 +9,7 @@ const getConversationsAction = data => {
   }
   data.data.forEach(getLatestConversations);
   return {
-    conversations: latest,
+    payload: latest,
     type: "GET_CONVERSATIONS"    
   }
 }
