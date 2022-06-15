@@ -10,7 +10,7 @@ class MessagesController < ApplicationController
         @message = Message.where('creator_id = ?', @user.id).limit(allowedParams[:limit])
         @message2 = Message.where('target_id = ?', @user.id).limit(allowedParams[:limit])
         @message = @message2 + @message
-        @message = @message.sort_by { | msg | -msg.created_at.to_i }
+        @message = @message.sort_by { | msg | msg.created_at.to_i }
         options = { is_collection: true }
         render json: serialize_message(options)
         return
