@@ -7,7 +7,7 @@ function Message(props) {
     return `${date.getHours() + 1}:${date.getMinutes() + 1} A.M.`;
   }
   return (
-    <div className="message-container creator"> 
+    <div className={`message-container  ${parseInt(props.message.attributes.creator.userId) === parseInt(props.userId) ? "creator" : "target"}`}>
       <div className="date">
         {`${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()} ${getTwelveHours()}`}
       </div>
