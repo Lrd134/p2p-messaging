@@ -12,7 +12,7 @@ import ConversationContainer from './conversations/conversationContainer'
 import { connect } from 'react-redux';
 import { logoutUser, loginUser } from './users/userDispatch'
 import { getMessages } from './messages/messagesDispatch'
-
+import MessageContainer from './messages/messageContainer.js'
 
 class App extends Component {
   render () {
@@ -23,7 +23,8 @@ class App extends Component {
               <Route path="/login" element={<Login loginUser={this.props.loginUser} getMessages={this.props.getMessages} />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/logout" element={<Logout />} />
-              <Route path="/messages" element={<ConversationContainer conversations={this.props.conversations}/>} />
+              <Route path="/messages" element={<ConversationContainer conversations={this.props.conversations} />} />
+              <Route path="/messages/:conversationId" element={<MessageContainer messages={this.props.messages} userId={this.props.session.session.id} />} />
             </Route>
           </Routes>
         </BrowserRouter>
