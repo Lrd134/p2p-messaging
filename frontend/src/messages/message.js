@@ -1,3 +1,4 @@
+import "./message.css";
 function Message(props) {
   const date = new Date(props.message.attributes.creator.sentAt)
   const getTwelveHours = () => {
