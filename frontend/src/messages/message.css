@@ -1,0 +1,14 @@
+.message-container {
+  width: 75%;
+  border: 1px black solid;
+  padding: 5px;
+  border-radius: 10px;
+  margin-bottom: 7px;
+}
+.target {
+  display: flex;
+  float: left;
+}
+.creator {
+  float: right;
+}
