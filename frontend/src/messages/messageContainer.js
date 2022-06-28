@@ -7,7 +7,7 @@ function MessageContainer(props) {
   const [message, setMessage] = useState("");
 
   const renderMessages = () => props.messages.messages.filter(message => parseInt(message.attributes.conversation_id) === parseInt(conversationId))
-   .map(message => <Message key={message.id} message={message} />)
+   .map(message => <Message key={message.id} message={message} userId={props.userId}/>)
 
   const handleSubmit = event => {
     event.preventDefault()
